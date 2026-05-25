@@ -1,0 +1,40 @@
+name: Pipeline CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-and-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run unit tests
+        run: pytest tests/ -v
+
+      - name: Run data pipeline (synthetic data)
+        run: |
+          python scripts/clean_data.py
+          python scripts/load_to_sql.py
+          python scripts/forecast.py
+
+      - name: Verify outputs exist
+        run: |
+          test -f data/cleaned/rents_clean.csv       && echo "rents_clean.csv OK"
+          test -f data/cleaned/vacancy_clean.csv     && echo "vacancy_clean.csv OK"
+          test -f data/cleaned/rent_forecast.csv     && echo "rent_forecast.csv OK"
+          test -f data/real_estate.db                && echo "real_estate.db OK"
