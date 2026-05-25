@@ -2,14 +2,11 @@
 
 > An end-to-end data pipeline and multi-format dashboard analyzing multifamily real estate trends across **New York City**, **Washington DC**, and the **Maryland Suburbs**.
 
-**[🚀 Live Demo →]([https://your-app.streamlit.app](https://nickblack-real-estate-market-dashboard.streamlit.app))**
+**[🚀 Live Demo →](https://nickblack-real-estate-market-dashboard.streamlit.app)** &nbsp;|&nbsp; **[GitHub →](https://github.com/codepioneerr/real-estate-market-dashboard)**
 
 ---
 
 ## Dashboard Preview
-
-<!-- After deploying, replace these with real screenshots -->
-<!-- To add: drag images into the /screenshots folder, then update these paths -->
 
 | Streamlit — Market Snapshot | Streamlit — Forecast Tab |
 |:-:|:-:|
@@ -84,7 +81,7 @@ Built to mirror the kind of market intelligence work done in professional real e
 
 ```bash
 # 1. Clone and install
-git clone https://github.com/YOUR_USERNAME/real-estate-market-dashboard
+git clone https://github.com/codepioneerr/real-estate-market-dashboard
 cd real-estate-market-dashboard
 pip install -r requirements.txt
 

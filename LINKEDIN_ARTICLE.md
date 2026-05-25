@@ -6,7 +6,7 @@
 
 I spent the last few weeks building a market analysis pipeline for multifamily real estate — applying the kind of analytical workflows I've developed in a professional real estate environment, but fully open-sourced and reproducible. Here's what I built, what the data actually says, and why Maryland might be the most overlooked market in the Mid-Atlantic.
 
-**[Live Dashboard →](https://your-app.streamlit.app)** | **[GitHub →](https://github.com/YOUR_USERNAME/real-estate-market-dashboard)**
+**[Live Dashboard →](https://nickblack-real-estate-market-dashboard.streamlit.app)** | **[GitHub →](https://github.com/codepioneerr/real-estate-market-dashboard)**
 
 ---
 
