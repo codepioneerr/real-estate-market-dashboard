@@ -25,7 +25,7 @@
 
 ## What This Project Does
 
-Mirrors the market intelligence work done at RST Development — pulling public data, cleaning it, storing it in a queryable database, forecasting forward rent levels, and packaging the results into both a live web app and an Excel deliverable.
+Built to mirror the kind of market intelligence work done in professional real estate environments — pulling public data, cleaning it, storing it in a queryable database, forecasting forward rent levels, and packaging the results into both a live web app and an Excel deliverable.
 
 **Key findings:**
 - NYC experienced a ~10% COVID rent correction in 2020–2021 but recovered strongly, now leading YoY growth at +5.9%
@@ -159,4 +159,4 @@ real-estate-dashboard/
 ---
 
 *Nicholas Black — Real Estate Market Analysis Portfolio Project*  
-*Built to mirror market intelligence workflows at RST Development*
+*Built to apply market intelligence workflows from a professional real estate environment*

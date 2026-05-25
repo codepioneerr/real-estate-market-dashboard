@@ -7,13 +7,47 @@ Local dev:
 """
 
 import os
+import sys
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
-BASE = os.path.dirname(__file__)
+BASE = os.path.dirname(os.path.abspath(__file__))
 CLEAN = os.path.join(BASE, "data", "cleaned")
+
+# Make sure scripts/ is importable
+sys.path.insert(0, os.path.join(BASE, "scripts"))
+
+
+def _bootstrap_data():
+    """Auto-generate cleaned data and forecast if not present (e.g. Streamlit Cloud)."""
+    os.makedirs(CLEAN, exist_ok=True)
+    rents_path = os.path.join(CLEAN, "rents_clean.csv")
+    if not os.path.exists(rents_path):
+        from clean_data import (
+            generate_synthetic_rent, generate_synthetic_vacancy,
+            generate_synthetic_income, compute_mom_yoy, compute_affordability,
+        )
+        rents = compute_mom_yoy(generate_synthetic_rent())
+        vacancy = generate_synthetic_vacancy()
+        income = generate_synthetic_income()
+        afford = compute_affordability(rents, income)
+        rents.to_csv(os.path.join(CLEAN, "rents_clean.csv"), index=False)
+        vacancy.to_csv(os.path.join(CLEAN, "vacancy_clean.csv"), index=False)
+        income.to_csv(os.path.join(CLEAN, "income_clean.csv"), index=False)
+        afford.to_csv(os.path.join(CLEAN, "affordability_clean.csv"), index=False)
+
+    forecast_path = os.path.join(CLEAN, "rent_forecast.csv")
+    if not os.path.exists(forecast_path):
+        from forecast import forecast_city
+        import pandas as _pd, numpy as _np
+        rents = _pd.read_csv(os.path.join(CLEAN, "rents_clean.csv"), parse_dates=["date"])
+        frames = [forecast_city(grp)[0] for _, grp in rents.groupby("City")]
+        _pd.concat(frames, ignore_index=True).to_csv(forecast_path, index=False)
+
+
+_bootstrap_data()
 
 CITY_COLORS = {
     "New York City": "#2E5299",
