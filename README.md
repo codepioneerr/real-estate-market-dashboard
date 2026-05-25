@@ -2,7 +2,7 @@
 
 > An end-to-end data pipeline and multi-format dashboard analyzing multifamily real estate trends across **New York City**, **Washington DC**, and the **Maryland Suburbs**.
 
-**[🚀 Live Demo →](https://your-app.streamlit.app)** ← *(replace with your Streamlit Cloud URL after deploying)*
+**[🚀 Live Demo →]([https://your-app.streamlit.app](https://nickblack-real-estate-market-dashboard.streamlit.app))**
 
 ---
 
